@@ -1,0 +1,33 @@
+.json-display {
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.5;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.json-ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.json-li {
+  margin: 4px 0;
+}
+
+.json-key {
+  color: #0056b3;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.json-key:hover {
+  text-decoration: underline;
+}
+
+.json-value {
+  color: #333;
+}
