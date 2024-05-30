@@ -28,6 +28,9 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
+      - name: print current directory
+        run: pwd
+
       - name: 📥 Download deps
         run: pnpm install --frozen-lockfile
 
