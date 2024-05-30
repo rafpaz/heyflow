@@ -1,7 +1,9 @@
 export function getValueByPath(
-  obj: Record<string, unknown>,
+  obj: Record<string, unknown> | null,
   path: string
 ): unknown {
+  if (!obj) return undefined;
+
   return path
     .replace(/\[(\d+)\]/g, '.$1')
     .split('.')

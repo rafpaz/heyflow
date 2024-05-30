@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 
+import { JsonExplorerContext } from '@/components/JsonExplorer/JsonExplorerContext';
 import JsonExplorerInput from '@/components/JsonExplorer/JsonExplorerInput/JsonExplorerInput';
 import JsonNode from '@/components/JsonExplorer/JsonNode/JsonNode';
 
@@ -16,19 +17,21 @@ const JsonExplorer: React.FC<JsonExplorerProps> = ({ data }) => {
     setJsonKey(key);
     setValue(value);
   };
+
   return (
-    <div className='font-mono p-4'>
-      <JsonExplorerInput
-        jsonKey={jsonKey}
-        setJsonKey={setJsonKey}
-        value={value}
-        setValue={setValue}
-        data={data}
-      />
-      <div className='leading-6 p-4 bg-gray-100 border border-gray-300 rounded-md'>
-        <JsonNode data={data} parentKey='' onKeyClick={handleKeyClick} />
+    <JsonExplorerContext.Provider value={{ data }}>
+      <div className='font-mono p-4'>
+        <JsonExplorerInput
+          jsonKey={jsonKey}
+          setJsonKey={setJsonKey}
+          value={value}
+          setValue={setValue}
+        />
+        <div className='leading-6 p-4 bg-gray-100 border border-gray-300 rounded-md'>
+          <JsonNode data={data} parentKey='' onKeyClick={handleKeyClick} />
+        </div>
       </div>
-    </div>
+    </JsonExplorerContext.Provider>
   );
 };
 
