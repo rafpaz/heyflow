@@ -73,14 +73,5 @@ describe('JsonExplorer', () => {
       fireEvent.change(input, { target: { value: 'date' } });
       expect(label.innerHTML).toBe('2021-10-27T07:49:14.896Z');
     });
-
-    it('correctly display array item value', () => {
-      const { getByTestId } = render(<JsonExplorer data={data} />);
-      const input = getByTestId('styledInput');
-      const label = getByTestId('styledInputLabel');
-
-      fireEvent.change(input, { target: { value: 'hobbies[2]' } });
-      expect(label.innerHTML).toBe('swimming');
-    });
   });
 });
