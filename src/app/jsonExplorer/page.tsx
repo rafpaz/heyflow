@@ -1,16 +1,31 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 
-import JsonNode from './JsonNode';
+import JsonNode from '@/components/JsonNode/JsonNode';
+import StyledInput from '@/components/StyledInput';
 
-interface JsonExplorerProps {
-  data: Record<string, unknown>;
-  onKeyClick: (key: string, value: unknown) => void;
-}
+import { data } from './sampleData';
 
-const JsonExplorer: React.FC<JsonExplorerProps> = ({ data, onKeyClick }) => {
+const JsonExplorer: React.FC = () => {
+  const [jsonKey, setJsonKey] = useState('');
+  const [value, setValue] = useState('');
+
+  const handleKeyClick = (key: string, value: string) => {
+    setJsonKey(key);
+    setValue(value);
+  };
   return (
-    <div className="font-mono leading-6 p-4 bg-gray-100 border border-gray-300 rounded-md">
-      <JsonNode data={data} parentKey="" onKeyClick={onKeyClick} />
+    <div className='font-mono p-4'>
+      <StyledInput
+        jsonKey={jsonKey}
+        setJsonKey={setJsonKey}
+        value={value}
+        setValue={setValue}
+        data={data}
+      />
+      <div className='leading-6 p-4 bg-gray-100 border border-gray-300 rounded-md'>
+        <JsonNode data={data} parentKey='' onKeyClick={handleKeyClick} />
+      </div>
     </div>
   );
 };
