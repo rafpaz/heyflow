@@ -7,18 +7,18 @@ import { data } from './__constants__/sampleData';
 
 describe('JsonExplorer', () => {
   it('renders without crashing', () => {
-    const { container } = render(<JsonExplorer data={data} />);
+    const { container } = render(<JsonExplorer jsonData={data} />);
     expect(container).toBeTruthy();
   });
 
   it('initial state is correct', () => {
-    const { getByTestId } = render(<JsonExplorer data={data} />);
+    const { getByTestId } = render(<JsonExplorer jsonData={data} />);
     expect((getByTestId('styledInput') as HTMLInputElement).value).toBe('');
     expect(getByTestId('styledInputLabel').innerText).toBe(undefined);
   });
 
   it('handleKeyClick updates state correctly', () => {
-    const { getByTestId, getByText } = render(<JsonExplorer data={data} />);
+    const { getByTestId, getByText } = render(<JsonExplorer jsonData={data} />);
     const input = getByTestId('styledInput');
     const label = getByTestId('styledInputLabel');
 
@@ -28,8 +28,8 @@ describe('JsonExplorer', () => {
     expect(label.innerHTML).toBe('Anytown');
   });
 
-  it('handleKeyClick updates state correctly', () => {
-    const { getByTestId } = render(<JsonExplorer data={data} />);
+  it('typing in input updates the label value', () => {
+    const { getByTestId } = render(<JsonExplorer jsonData={data} />);
     const input = getByTestId('styledInput');
     const label = getByTestId('styledInputLabel');
 
@@ -38,7 +38,7 @@ describe('JsonExplorer', () => {
   });
 
   it('show undefined if path does not exist', () => {
-    const { getByTestId } = render(<JsonExplorer data={data} />);
+    const { getByTestId } = render(<JsonExplorer jsonData={data} />);
     const input = getByTestId('styledInput');
     const label = getByTestId('styledInputLabel');
 
@@ -48,7 +48,7 @@ describe('JsonExplorer', () => {
 
   describe('json values', () => {
     it('correctly display number value', () => {
-      const { getByTestId } = render(<JsonExplorer data={data} />);
+      const { getByTestId } = render(<JsonExplorer jsonData={data} />);
       const input = getByTestId('styledInput');
       const label = getByTestId('styledInputLabel');
 
@@ -57,7 +57,7 @@ describe('JsonExplorer', () => {
     });
 
     it('correctly display boolean value', () => {
-      const { getByTestId } = render(<JsonExplorer data={data} />);
+      const { getByTestId } = render(<JsonExplorer jsonData={data} />);
       const input = getByTestId('styledInput');
       const label = getByTestId('styledInputLabel');
 
@@ -66,7 +66,7 @@ describe('JsonExplorer', () => {
     });
 
     it('correctly display date value', () => {
-      const { getByTestId } = render(<JsonExplorer data={data} />);
+      const { getByTestId } = render(<JsonExplorer jsonData={data} />);
       const input = getByTestId('styledInput');
       const label = getByTestId('styledInputLabel');
 

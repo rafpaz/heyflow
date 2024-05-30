@@ -1,5 +1,5 @@
 export function getValueByPath(
-  obj: Record<string, unknown> | null,
+  obj: Record<string, unknown> | undefined,
   path: string
 ): unknown {
   if (!obj) return undefined;

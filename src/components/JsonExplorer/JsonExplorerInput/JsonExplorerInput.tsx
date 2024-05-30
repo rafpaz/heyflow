@@ -19,7 +19,8 @@ const JsonExplorerInput: React.FC<JsonExplorerInputProps> = ({
   value,
   setValue,
 }) => {
-  const jsonData = useContext(JsonExplorerContext);
+  const { jsonData } = useContext(JsonExplorerContext) ?? {};
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setJsonKey(e.target.value);
     const extractedValue = getValueByPath(jsonData, e.target.value);
