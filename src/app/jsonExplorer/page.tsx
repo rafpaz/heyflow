@@ -1,33 +1,11 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 
-import JsonNode from '@/components/JsonNode/JsonNode';
-import StyledInput from '@/components/StyledInput';
+import { data } from '@/components/JsonExplorer/__constants__/sampleData';
+import JsonExplorer from '@/components/JsonExplorer/JsonExplorer';
 
-import { data } from './sampleData';
-
-const JsonExplorer: React.FC = () => {
-  const [jsonKey, setJsonKey] = useState('');
-  const [value, setValue] = useState('');
-
-  const handleKeyClick = (key: string, value: string) => {
-    setJsonKey(key);
-    setValue(value);
-  };
-  return (
-    <div className='font-mono p-4'>
-      <StyledInput
-        jsonKey={jsonKey}
-        setJsonKey={setJsonKey}
-        value={value}
-        setValue={setValue}
-        data={data}
-      />
-      <div className='leading-6 p-4 bg-gray-100 border border-gray-300 rounded-md'>
-        <JsonNode data={data} parentKey='' onKeyClick={handleKeyClick} />
-      </div>
-    </div>
-  );
+const JsonExplorerPage: React.FC = () => {
+  return <JsonExplorer data={data} />;
 };
 
-export default JsonExplorer;
+export default JsonExplorerPage;

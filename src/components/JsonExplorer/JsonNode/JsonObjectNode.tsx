@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { isPresentableValue } from '@/components/JsonExplorer/__helpers__/isPresentableValue';
+
 import JsonNode from './JsonNode';
 
 interface JsonObjectNodeProps {
@@ -22,13 +24,18 @@ const JsonObjectNode: React.FC<JsonObjectNodeProps> = ({
           return (
             <li key={compositeKey} className='my-1'>
               <span
-                className='text-blue-600 cursor-pointer font-bold hover:underline'
-                onClick={() =>
+                className={`${
+                  isPresentableValue(value)
+                    ? 'text-blue-600 cursor-pointer hover:underline'
+                    : 'text-black-400'
+                }`}
+                onClick={() => {
+                  if (!isPresentableValue(value)) return;
                   onKeyClick(
                     compositeKey,
                     JSON.stringify(value).replace(/^"(.*)"$/g, '$1')
-                  )
-                }
+                  );
+                }}
               >
                 {key}
               </span>

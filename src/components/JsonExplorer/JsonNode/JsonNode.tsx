@@ -1,8 +1,8 @@
 import React from 'react';
 
-import JsonArrayNode from '@/components/JsonNode/JsonArrayNode';
-import JsonObjectNode from '@/components/JsonNode/JsonObjectNode';
-import JsonValueNode from '@/components/JsonNode/JsonValueNode';
+import JsonArrayNode from '@/components/JsonExplorer/JsonNode/JsonArrayNode';
+import JsonObjectNode from '@/components/JsonExplorer/JsonNode/JsonObjectNode';
+import JsonValueNode from '@/components/JsonExplorer/JsonNode/JsonValueNode';
 
 interface JsonNodeProps {
   data: unknown;
